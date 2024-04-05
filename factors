@@ -1,0 +1,21 @@
+import sys
+
+def factorize(n):
+    # A simple approach to factorize the given number 'n'
+    for i in range(2, n):
+        if n % i == 0:
+            return i, n // i
+    return n, 1
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    with open(filename, 'r') as file:
+        for line in file:
+            number = int(line.strip())
+            p, q = factorize(number)
+            print(f"{number}={p}*{q}")
+
